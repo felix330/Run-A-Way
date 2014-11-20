@@ -12,9 +12,11 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(500, 500), "SFML Test!");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
+
+	int count = 0;
 
 	while (window.isOpen())
 	{
@@ -25,10 +27,38 @@ int main()
 				window.close();
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			int posX = shape.getPosition().x;
+			
+			count++;
+			if (count == 10)
+			{
+				shape.setPosition((posX - 1), 0);
+				count = 0;
+			}
+
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			int posX = shape.getPosition().x;
+
+			count++;
+			if (count == 10)
+			{
+				shape.setPosition((posX + 1), 0);
+				count = 0;
+			}
+
+		}
+
 		window.clear();
 		window.draw(shape);
 		window.display();
 	}
+
+	
 
 	return 0;
 }
