@@ -8,10 +8,15 @@
 #endif // SFML_STATIC
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Config.hpp>
+#include <SFML/System.hpp>
+
+#include "Header.h"
 
 void blabl()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML TEsT");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
@@ -29,4 +34,33 @@ void blabl()
 		window.display();
 	}
 
+}
+
+Game::Game()
+{
+	windowX = 240;
+	windowY = 320;
+
+	
+}
+
+void Game::loop()
+{
+	sf::RenderWindow window(sf::VideoMode(windowX, windowY), "Run a Way");
+	sf::CircleShape shape(100.f);
+	shape.setFillColor(sf::Color::Green);
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+		window.clear();
+		window.draw(shape);
+		window.display();
+	}
 }

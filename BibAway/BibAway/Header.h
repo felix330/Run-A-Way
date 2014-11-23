@@ -1,7 +1,17 @@
+#ifdef SFML_STATIC
+#pragma comment(lib, "glew.lib")
+#pragma comment(lib, "freetype.lib")
+#pragma comment(lib, "jpeg.lib")
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "gdi32.lib")  
+#endif // SFML_STATIC
+
+#include <SFML/Graphics.hpp>
 
 void blabl();
 
-class structure //Für die Speicherung von Gegneransammlungen erbt enemy?
+class Structure 
 {
 private:
 
@@ -9,7 +19,7 @@ public:
 
 };
 
-class enemy
+class Enemy
 {
 private:
 
@@ -17,7 +27,7 @@ public:
 
 };
 
-class level //erbt structure?
+class Level 
 {
 private:
 
@@ -25,7 +35,7 @@ public:
 
 };
 
-class draw //Zeigt Bildschirminhalt
+class Draw //Zeigt Bildschirminhalt
 {
 private:
 
@@ -33,7 +43,7 @@ public:
 
 };
 
-class powerup
+class Powerup
 {
 private:
 
@@ -41,15 +51,19 @@ public:
 
 };
 
-class game
+class Game
 {
 private:
-
+	int windowX; //Fenstergrößen
+	int windowY;
+	sf::RenderWindow window;
 public:
-
+	Game();
+	//~game();
+	void loop();
 };
 
-class playercontrol
+class Playercontrol
 {
 private:
 

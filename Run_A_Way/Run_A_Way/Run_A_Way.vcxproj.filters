@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\BibAway\Debug\BibAway.lib">
+    <Library Include="..\Debug\BibAway.lib">
       <Filter>Resource Files</Filter>
     </Library>
   </ItemGroup>

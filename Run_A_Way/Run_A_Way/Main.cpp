@@ -13,6 +13,7 @@
 
 int main()
 {
-	blabl();
-	return 1;
+	Game gameWindow;
+	
+	gameWindow.loop();
 }
