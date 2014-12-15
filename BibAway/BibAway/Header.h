@@ -9,8 +9,6 @@
 
 #include <SFML/Graphics.hpp>
 
-void blabl();
-
 class Structure 
 {
 private:
@@ -56,17 +54,25 @@ class Game
 private:
 	int windowX; //Fenstergrößen
 	int windowY;
+	int highscore;
 	sf::RenderWindow window;
+	sf::Sprite sprites[];
 public:
 	Game();
 	//~game();
 	void loop();
+	void doodle();
 };
 
-class Playercontrol
+class GameObject
 {
 private:
-
+	int x;
+	int y;
+	int sizeX;
+	int sizeY;
 public:
-
+	GameObject(int xPos,int yPos);
+	void setPosition(int xPos, int yPos); //sets x,y to position
+	void movePosition(int moveX, int moveY); //moves by a certain amount of pixels
 };

@@ -14,27 +14,6 @@
 
 #include "Header.h"
 
-void blabl()
-{
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML TEsT");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
-
-}
 
 Game::Game()
 {
@@ -50,10 +29,10 @@ void Game::loop()
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
-	while (window.isOpen())
+	while (window.isOpen()) 
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window.pollEvent(event)) //Schlieﬂt wenn Fenster zu
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
@@ -63,4 +42,9 @@ void Game::loop()
 		window.draw(shape);
 		window.display();
 	}
+}
+
+void Game::doodle()
+{
+
 }
