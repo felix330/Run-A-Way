@@ -72,7 +72,21 @@ private:
 	int sizeX;
 	int sizeY;
 public:
+	GameObject();
 	GameObject(int xPos,int yPos);
 	void setPosition(int xPos, int yPos); //sets x,y to position
 	void movePosition(int moveX, int moveY); //moves by a certain amount of pixels
+};
+
+class Player : GameObject
+{
+private:
+	int receivedCommand; //last received command
+	int currentLane; //Lane in which the player currently is (1,2,3)
+public:
+	Player();
+	//~Player();
+	int getCommand(); //return pressed key as sf::Key
+	void readCommands(); //reads key input, called from main loop
+
 };

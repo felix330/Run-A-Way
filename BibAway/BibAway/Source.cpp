@@ -28,6 +28,7 @@ void Game::loop()
 	sf::RenderWindow window(sf::VideoMode(windowX, windowY), "Run a Way");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
+	Player player1;
 
 	while (window.isOpen()) 
 	{
@@ -38,6 +39,10 @@ void Game::loop()
 				window.close();
 		}
 
+		//Spieler Funktionsaufrufe
+		player1.readCommands();
+
+		//Fenster Darstellung
 		window.clear();
 		window.draw(shape);
 		window.display();

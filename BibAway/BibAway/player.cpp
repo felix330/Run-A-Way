@@ -14,27 +14,13 @@
 
 #include "Header.h"
 
-GameObject::GameObject(int xPos, int yPos)
+Player::Player()
 {
-	x = xPos;
-	y = yPos;
+	setPosition(0, 0);
+
 }
 
-GameObject::GameObject()
+void Player::readCommands()
 {
-	x = 0;
-	y = 0;
-}
-
-void GameObject::setPosition(int xPos, int yPos) //sets x,y to position
-{
-	x = xPos;
-	y = yPos;
-}
-
-
-void GameObject::movePosition(int moveX, int moveY) //moves by a certain amount of pixels
-{
-	x += moveX;
-	y += moveY;
+	printf("reading");
 }
