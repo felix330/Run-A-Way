@@ -87,6 +87,7 @@ public:
 	Player();
 	//~Player();
 	int getCommand(); //return pressed key as sf::Key
-	void readCommands(); //reads key input, called from main loop
+	void walkLeft();
+	void walkRight();
 
 };

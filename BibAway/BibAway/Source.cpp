@@ -37,6 +37,21 @@ void Game::loop()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::Left)
+				{
+					printf("goleft");
+					player1.walkLeft();
+				}
+				if (event.key.code == sf::Keyboard::Right)
+				{
+					printf("goright");
+					player1.walkRight();
+				}
+			}
+			
 		}
 
 		//Spieler Funktionsaufrufe
