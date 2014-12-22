@@ -17,13 +17,6 @@ public:
 
 };
 
-class Enemy
-{
-private:
-
-public:
-
-};
 
 class Level 
 {
@@ -89,5 +82,14 @@ public:
 	int getCommand(); //return pressed key as sf::Key
 	void walkLeft();
 	void walkRight();
+
+};
+
+
+class Enemy : GameObject
+{
+private:
+
+public:
 
 };

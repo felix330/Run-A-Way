@@ -55,7 +55,6 @@ void Game::loop()
 		}
 
 		//Spieler Funktionsaufrufe
-		player1.readCommands();
 
 		//Fenster Darstellung
 		window.clear();
