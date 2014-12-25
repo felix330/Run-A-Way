@@ -26,12 +26,40 @@ void Player::walkLeft()
 	{
 		currentLane--;
 	}
+	
+	if (currentLane == 1)
+	{
+		setPosition(30, 260);
+	}
+	else if (currentLane == 2)
+	{
+		setPosition(90, 260);
+	}
 }
 
 void Player::walkRight()
 {
 	if (currentLane < 3)
 	{
-		currentLane--;
+		currentLane++;
 	}
+
+	if (currentLane == 2)
+	{
+		setPosition(90, 260);
+	}
+	else if (currentLane == 3)
+	{
+		setPosition(150, 260);
+	}
+}
+
+int Player::getX()
+{
+	return getXroot();
+}
+
+int Player::getY()
+{
+	return getYroot();
 }

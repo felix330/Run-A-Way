@@ -38,3 +38,13 @@ void GameObject::movePosition(int moveX, int moveY) //moves by a certain amount 
 	x += moveX;
 	y += moveY;
 }
+
+int GameObject::getXroot()
+{
+	return x;
+}
+
+int GameObject::getYroot()
+{
+	return y;
+}

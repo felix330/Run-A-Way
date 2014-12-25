@@ -28,6 +28,16 @@ void Game::loop()
 	sf::RenderWindow window(sf::VideoMode(windowX, windowY), "Run a Way");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
+
+	sf::Texture texture;
+	if (!texture.loadFromFile("up_middel.png"))
+	{
+		// error...
+		printf("error");
+	}
+	sf::Sprite sprite;
+	sprite.setTexture(texture);
+
 	Player player1;
 
 	while (window.isOpen()) 
@@ -42,12 +52,12 @@ void Game::loop()
 			{
 				if (event.key.code == sf::Keyboard::Left)
 				{
-					printf("goleft");
+					
 					player1.walkLeft();
 				}
 				if (event.key.code == sf::Keyboard::Right)
 				{
-					printf("goright");
+					
 					player1.walkRight();
 				}
 			}
@@ -58,7 +68,10 @@ void Game::loop()
 
 		//Fenster Darstellung
 		window.clear();
-		window.draw(shape);
+
+		//Draw Sprites
+		sprite.setPosition(player1.getX(),player1.getY());
+		window.draw(sprite);
 		window.display();
 	}
 }

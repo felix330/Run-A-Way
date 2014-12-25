@@ -69,6 +69,8 @@ public:
 	GameObject(int xPos,int yPos);
 	void setPosition(int xPos, int yPos); //sets x,y to position
 	void movePosition(int moveX, int moveY); //moves by a certain amount of pixels
+	int getXroot();
+	int getYroot();
 };
 
 class Player : GameObject
@@ -82,7 +84,8 @@ public:
 	int getCommand(); //return pressed key as sf::Key
 	void walkLeft();
 	void walkRight();
-
+	int getX();
+	int getY();
 };
 
 
