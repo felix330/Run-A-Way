@@ -16,7 +16,7 @@
 
 Player::Player()
 {
-	setPosition(0, 0);
+	setPosition(90, 260);
 	currentLane = 2;
 }
 

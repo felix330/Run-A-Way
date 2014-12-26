@@ -92,6 +92,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
     <ClCompile Include="gameobject.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Source.cpp" />

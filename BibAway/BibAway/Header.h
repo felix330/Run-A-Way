@@ -78,10 +78,10 @@ class Player : GameObject
 private:
 	int receivedCommand; //last received command
 	int currentLane; //Lane in which the player currently is (1,2,3)
+	int lives; //lifecount
 public:
 	Player();
 	//~Player();
-	int getCommand(); //return pressed key as sf::Key
 	void walkLeft();
 	void walkRight();
 	int getX();
@@ -95,4 +95,15 @@ private:
 
 public:
 
+};
+
+class Background : GameObject
+{
+private:
+	int count;
+public:
+	Background(int y);
+	void move();
+	int getX();
+	int getY();
 };

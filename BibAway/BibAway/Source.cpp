@@ -26,20 +26,33 @@ Game::Game()
 void Game::loop()
 {
 	sf::RenderWindow window(sf::VideoMode(windowX, windowY), "Run a Way");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
-
-	sf::Texture texture;
-	if (!texture.loadFromFile("up_middel.png"))
+	
+	//Load Sprites here
+	sf::Texture playertex;
+	if (!playertex.loadFromFile("up_middel.png"))
 	{
 		// error...
 		printf("error");
 	}
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
+	sf::Sprite playerspr;
+	playerspr.setTexture(playertex);
 
+	sf::Texture backgroundtex; //Background
+	if (!backgroundtex.loadFromFile("background.png"))
+	{
+		// error...
+		printf("error");
+	}
+	sf::Sprite backgroundspr;
+	backgroundspr.setTexture(backgroundtex);
+
+	//Create Objects for start of game
 	Player player1;
 
+	Background bg1(-640);
+	Background bg2(0);
+
+	//Main Loop
 	while (window.isOpen()) 
 	{
 		sf::Event event;
@@ -64,14 +77,25 @@ void Game::loop()
 			
 		}
 
-		//Spieler Funktionsaufrufe
+		//player function calls
 
 		//Fenster Darstellung
 		window.clear();
 
 		//Draw Sprites
-		sprite.setPosition(player1.getX(),player1.getY());
-		window.draw(sprite);
+		bg1.move();
+		bg2.move();
+		backgroundspr.setPosition(bg1.getX(), bg1.getY());
+		window.draw(backgroundspr);
+		backgroundspr.setPosition(bg2.getX(), bg2.getY());
+		window.draw(backgroundspr);
+
+		playerspr.setPosition(player1.getX(),player1.getY());
+		window.draw(playerspr);
+
+		
+
+		//---
 		window.display();
 	}
 }
