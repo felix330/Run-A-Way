@@ -33,11 +33,10 @@ int Background::getY()
 void Background::move()
 {
 	count++;
-	if (count == 120)
+	if (count == 1)
 	{	
 		if (getYroot() >= 320)
 		{
-			printf("setting to 0");
 			setPosition(0, -960);
 		}
 		else

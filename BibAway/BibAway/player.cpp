@@ -18,6 +18,7 @@ Player::Player()
 {
 	setPosition(90, 260);
 	currentLane = 2;
+	lives = 3;
 }
 
 void Player::walkLeft()

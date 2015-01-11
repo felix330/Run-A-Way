@@ -48,11 +48,14 @@ private:
 	int windowX; //Fenstergrößen
 	int windowY;
 	int highscore;
+	int score;
 	sf::RenderWindow window;
-	sf::Sprite sprites[];
+	//sf::Sprite sprites[];
+	int count; //zählt frames
 public:
 	Game();
 	//~game();
+	void incScore();
 	void loop();
 	void doodle();
 };
