@@ -45,12 +45,13 @@ public:
 class Game
 {
 private:
+	int state;
 	int windowX; //Fenstergrößen
 	int windowY;
 	int highscore;
 	int score;
 	sf::RenderWindow window;
-	//sf::Sprite sprites[];
+	sf::Sprite sprites[10];
 	int count; //zählt frames
 public:
 	Game();
@@ -89,6 +90,8 @@ public:
 	void walkRight();
 	int getX();
 	int getY();
+	int getLives();
+	void loseLife();
 };
 
 

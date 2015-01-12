@@ -19,6 +19,7 @@ Player::Player()
 	setPosition(90, 260);
 	currentLane = 2;
 	lives = 3;
+
 }
 
 void Player::walkLeft()
@@ -63,4 +64,14 @@ int Player::getX()
 int Player::getY()
 {
 	return getYroot();
+}
+
+void Player::loseLife()
+{
+	lives--;
+}
+
+int Player::getLives()
+{
+	return lives;
 }

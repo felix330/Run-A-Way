@@ -27,15 +27,25 @@ void Game::loop()
 {
 	sf::RenderWindow window(sf::VideoMode(windowX, windowY), "Run a Way");
 	window.setFramerateLimit(60);
+	int counter=0;
+
 	//Load Sprites here
-	sf::Texture playertex;
-	if (!playertex.loadFromFile("up_middel.png"))
+	sf::Texture playertexM;
+	if (!playertexM.loadFromFile("up_middel.png"))
 	{
-		// error...
-		printf("error");
 	}
+	sf::Texture playertexL;
+	if (!playertexL.loadFromFile("up_left.png"))
+	{
+	}
+	sf::Texture playertexR;
+	if (!playertexR.loadFromFile("up_right.png"))
+	{
+	}
+
 	sf::Sprite playerspr;
-	playerspr.setTexture(playertex);
+	playerspr.setTexture(playertexM);
+	int playeranimstate = 1;
 
 	sf::Texture backgroundtex; //Background
 	if (!backgroundtex.loadFromFile("background.png"))
@@ -64,6 +74,8 @@ void Game::loop()
 	//Main Loop
 	while (window.isOpen()) 
 	{
+		counter++;
+
 		sf::Event event;
 		while (window.pollEvent(event)) //Fenster eventabfrage
 		{
@@ -111,6 +123,32 @@ void Game::loop()
 		backgroundspr.setPosition(bg2.getX(), bg2.getY());
 		window.draw(backgroundspr);
 
+		//Player Animation
+		if (counter == 20 || counter == 40 || counter == 60)
+		{
+			playeranimstate++;
+			if (playeranimstate > 4)
+			{
+				playeranimstate = 1;
+			}
+		}
+
+		switch (playeranimstate)
+		{
+		case 1:
+			playerspr.setTexture(playertexL);
+			break;
+		case 2:
+			playerspr.setTexture(playertexM);
+			break;
+		case 3:
+			playerspr.setTexture(playertexR);
+			break;
+		case 4:
+			playerspr.setTexture(playertexM);
+			break;
+		}
+
 		playerspr.setPosition(player1.getX(),player1.getY());
 		window.draw(playerspr);
 
@@ -120,6 +158,11 @@ void Game::loop()
 
 		//---
 		window.display();
+
+		if (counter == 60)
+		{
+			counter = 0;
+		}
 	}
 }
 
