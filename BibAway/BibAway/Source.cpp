@@ -19,6 +19,7 @@ Game::Game()
 {
 	windowX = 240;
 	windowY = 320;
+	state = 0;
 	score = 0;
 	count = 0;
 }
@@ -74,7 +75,7 @@ void Game::loop()
 	//Main Loop
 	while (window.isOpen()) 
 	{
-		counter++;
+
 
 		sf::Event event;
 		while (window.pollEvent(event)) //Fenster eventabfrage
@@ -84,21 +85,25 @@ void Game::loop()
 			
 			if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.key.code == sf::Keyboard::Left)
+				if (event.key.code == sf::Keyboard::Left && state == 1)
 				{
 					
 					player1.walkLeft();
 				}
-				if (event.key.code == sf::Keyboard::Right)
+				if (event.key.code == sf::Keyboard::Right && state == 1)
 				{
 					
 					player1.walkRight();
+				}
+				if (event.key.code == sf::Keyboard::Return && state == 0)
+				{
+					state = 1;
+					printf("start");
 				}
 			}
 			
 		}
 
-		incScore();
 
 		//Interface text
 		char scorevalue[50];
@@ -114,49 +119,59 @@ void Game::loop()
 		window.clear();
 
 	
-
-		//Draw Sprites
-		bg1.move();
-		bg2.move();
-		backgroundspr.setPosition(bg1.getX(), bg1.getY());
-		window.draw(backgroundspr);
-		backgroundspr.setPosition(bg2.getX(), bg2.getY());
-		window.draw(backgroundspr);
-
-		//Player Animation
-		if (counter == 20 || counter == 40 || counter == 60)
+		if (state == 1)
 		{
-			playeranimstate++;
-			if (playeranimstate > 4)
+			counter++;
+			incScore();
+			//Draw Sprites
+			bg1.move();
+			bg2.move();
+			backgroundspr.setPosition(bg1.getX(), bg1.getY());
+			window.draw(backgroundspr);
+			backgroundspr.setPosition(bg2.getX(), bg2.getY());
+			window.draw(backgroundspr);
+
+			//Player Animation
+			if (counter == 20 || counter == 40 || counter == 60)
 			{
-				playeranimstate = 1;
+				playeranimstate++;
+				if (playeranimstate > 4)
+				{
+					playeranimstate = 1;
+				}
 			}
+
+			switch (playeranimstate)
+			{
+			case 1:
+				playerspr.setTexture(playertexL);
+				break;
+			case 2:
+				playerspr.setTexture(playertexM);
+				break;
+			case 3:
+				playerspr.setTexture(playertexR);
+				break;
+			case 4:
+				playerspr.setTexture(playertexM);
+				break;
+			}
+
+			playerspr.setPosition(player1.getX(), player1.getY());
+			window.draw(playerspr);
+
+			//Draw Text
+
+			window.draw(scoretext);
+
+			//---
 		}
 
-		switch (playeranimstate)
+		if (state == 2) //Game over
 		{
-		case 1:
-			playerspr.setTexture(playertexL);
-			break;
-		case 2:
-			playerspr.setTexture(playertexM);
-			break;
-		case 3:
-			playerspr.setTexture(playertexR);
-			break;
-		case 4:
-			playerspr.setTexture(playertexM);
-			break;
+
 		}
-
-		playerspr.setPosition(player1.getX(),player1.getY());
-		window.draw(playerspr);
-
-		//Draw Text
 		
-		window.draw(scoretext);
-
-		//---
 		window.display();
 
 		if (counter == 60)

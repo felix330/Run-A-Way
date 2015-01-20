@@ -26,13 +26,6 @@ public:
 
 };
 
-class Draw //Zeigt Bildschirminhalt
-{
-private:
-
-public:
-
-};
 
 class Powerup
 {
