@@ -20,6 +20,8 @@ Player::Player()
 	currentLane = 2;
 	lives = 3;
 
+	
+
 }
 
 void Player::walkLeft()
@@ -37,6 +39,7 @@ void Player::walkLeft()
 	{
 		setPosition(90, 260);
 	}
+
 }
 
 void Player::walkRight()
@@ -74,4 +77,14 @@ void Player::loseLife()
 int Player::getLives()
 {
 	return lives;
+}
+
+int Player::getLane()
+{
+
+	char scorevalue[50];
+	printf("Playerlane: ");
+	itoa(currentLane, scorevalue, 10);
+	printf(scorevalue);
+	return currentLane;
 }

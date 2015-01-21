@@ -21,7 +21,8 @@ Game::Game()
 	windowY = 320;
 	state = 0;
 	score = 0;
-	count = 0;
+	enemycount = 0;
+	
 }
 
 void Game::loop()
@@ -44,6 +45,7 @@ void Game::loop()
 	{
 	}
 
+
 	sf::Sprite playerspr;
 	playerspr.setTexture(playertexM);
 	int playeranimstate = 1;
@@ -57,6 +59,20 @@ void Game::loop()
 	sf::Sprite backgroundspr;
 	backgroundspr.setTexture(backgroundtex);
 
+	//Enemy
+	sf::Texture enemyTexL;
+	if (!enemyTexL.loadFromFile("enemy_left.png"))
+	{
+	}
+	sf::Texture enemyTexR;
+	if (!enemyTexR.loadFromFile("enemy_right.png"))
+	{
+	}
+	sf::Sprite enemySpr;
+	enemySpr.setTexture(enemyTexL);
+	int enemyanimstate=0;
+	
+
 	//Font
 	sf::Font mainfont;
 
@@ -68,7 +84,8 @@ void Game::loop()
 
 	//Create Objects for start of game
 	Player player1;
-
+	Enemy john(&player1, 2, this);
+	Enemy stanley(&player1, 2, this);
 	Background bg1(-640);
 	Background bg2(0);
 
@@ -158,8 +175,38 @@ void Game::loop()
 			}
 
 			playerspr.setPosition(player1.getX(), player1.getY());
+			player1.getLane();
 			window.draw(playerspr);
 
+			//Enemy from here!!!
+
+			if (counter == 30 || counter == 60)
+			{
+				enemyanimstate++;
+				if (enemyanimstate > 2)
+				{
+					enemyanimstate = 1;
+				}
+			}
+
+
+			//EnemyAnimation
+			switch (enemyanimstate)
+			{
+			case 1:
+				enemySpr.setTexture(enemyTexL);
+				break;
+			case 2:
+				enemySpr.setTexture(enemyTexR);
+				break;
+			}
+			
+			for (int i = 1; i < enemycount; i++){
+				enemySpr.setPosition(enemyArray[i]->getX(), enemyArray[i]->getY());
+				enemyArray[i]->move();
+				window.draw(enemySpr);
+			}
+			
 			//Draw Text
 
 			window.draw(scoretext);
@@ -194,4 +241,10 @@ void Game::incScore()
 		score++;
 		count = 0;
 	}
+}
+
+void Game::addEnemy(Enemy* e)
+{
+	enemycount++;
+	enemyArray[enemycount]=e;
 }

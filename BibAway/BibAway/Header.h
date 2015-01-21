@@ -35,24 +35,7 @@ public:
 
 };
 
-class Game
-{
-private:
-	int state;
-	int windowX; //Fenstergrößen
-	int windowY;
-	int highscore;
-	int score;
-	sf::RenderWindow window;
-	sf::Sprite sprites[10];
-	int count; //zählt frames
-public:
-	Game();
-	//~game();
-	void incScore();
-	void loop();
-	void doodle();
-};
+
 
 class GameObject
 {
@@ -85,15 +68,24 @@ public:
 	int getY();
 	int getLives();
 	void loseLife();
+	int getLane();
 };
 
-
+class Game;
 class Enemy : GameObject
 {
 private:
+	Player *pl;
+	int newcurrentLane;
+
 
 public:
-
+	Enemy(Player* p, int lane, Game* g);
+	~Enemy();
+	bool collisionCheck();
+	void move();
+	int getX();
+	int getY();
 };
 
 class Background : GameObject
@@ -105,4 +97,27 @@ public:
 	void move();
 	int getX();
 	int getY();
+};
+
+class Game
+{
+private:
+	int state;
+	int windowX; //Fenstergrößen
+	int windowY;
+	int highscore;
+	int score;
+	sf::RenderWindow window;
+	sf::Sprite sprites[10];
+	int count; //zählt frames
+	int enemycount;
+	Enemy* enemyArray[];
+
+public:
+	Game();
+	//~game();
+	void incScore();
+	void loop();
+	void doodle();
+	void addEnemy(Enemy* e);
 };
