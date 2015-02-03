@@ -88,7 +88,7 @@ void Game::loop()
 	Player player1;
 	
 	//Enemy w1(&player1, 2, this);
-	Structure s1(&player1, this);
+	//Structure s1(&player1, this);
 	//Structure s2(&player1, this);
 	Background bg1(-640);
 	Background bg2(0);
@@ -194,6 +194,11 @@ void Game::loop()
 			}
 
 			//Enemy from here!!!
+
+			if (counter == 60)
+			{
+				Structure *s = new Structure(&player1,this);
+			}
 
 			if (counter == 30 || counter == 60)
 			{
