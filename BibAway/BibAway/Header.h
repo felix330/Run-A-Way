@@ -9,14 +9,6 @@
 
 #include <SFML/Graphics.hpp>
 
-class Structure 
-{
-private:
-
-public:
-
-};
-
 
 class Level 
 {
@@ -86,6 +78,18 @@ public:
 	void move();
 	int getX();
 	int getY();
+};
+
+class Structure
+{
+private:
+	Enemy* enemies[2];
+	Player* pl;
+	Game* ga;
+public:
+	Structure(Player* p, Game* g);
+	//~Structure();
+	void addEnemy(int l);
 };
 
 class Background : GameObject

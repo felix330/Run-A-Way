@@ -84,8 +84,10 @@ void Game::loop()
 
 	//Create Objects for start of game
 	Player player1;
-	Enemy john(&player1, 2, this);
-	Enemy stanley(&player1, 2, this);
+	
+	Enemy w1(&player1, 2, this);
+	//Structure s1(&player1, this);
+	//Structure s2(&player1, this);
 	Background bg1(-640);
 	Background bg2(0);
 
@@ -201,12 +203,13 @@ void Game::loop()
 				break;
 			}
 			
-			for (int i = 1; i < enemycount; i++){
+			for (int i = 0; i < enemycount; i++){
 				enemySpr.setPosition(enemyArray[i]->getX(), enemyArray[i]->getY());
 				enemyArray[i]->move();
 				window.draw(enemySpr);
 			}
 			
+
 			//Draw Text
 
 			window.draw(scoretext);
@@ -245,6 +248,7 @@ void Game::incScore()
 
 void Game::addEnemy(Enemy* e)
 {
-	enemycount++;
+	
 	enemyArray[enemycount]=e;
+	enemycount++;
 }

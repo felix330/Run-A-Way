@@ -82,9 +82,9 @@ int Player::getLives()
 int Player::getLane()
 {
 
-	char scorevalue[50];
+	/*char scorevalue[50];
 	printf("Playerlane: ");
 	itoa(currentLane, scorevalue, 10);
-	printf(scorevalue);
+	printf(scorevalue);*/
 	return currentLane;
 }
