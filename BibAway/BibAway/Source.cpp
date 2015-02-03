@@ -87,8 +87,8 @@ void Game::loop()
 	//Create Objects for start of game
 	Player player1;
 	
-	Enemy w1(&player1, 2, this);
-	//Structure s1(&player1, this);
+	//Enemy w1(&player1, 2, this);
+	Structure s1(&player1, this);
 	//Structure s2(&player1, this);
 	Background bg1(-640);
 	Background bg2(0);
@@ -187,6 +187,11 @@ void Game::loop()
 			playerspr.setPosition(player1.getX(), player1.getY());
 			player1.getLane();
 			window.draw(playerspr);
+
+			if (player1.getLives() <= 0)
+			{
+				state = 2;
+			}
 
 			//Enemy from here!!!
 

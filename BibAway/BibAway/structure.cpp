@@ -16,6 +16,7 @@
 
 Structure::Structure(Player* p, Game* g)
 {
+	srand(time(NULL));
 	int random = rand() % 7;
 	ga = g;
 	pl = p;
@@ -26,19 +27,22 @@ Structure::Structure(Player* p, Game* g)
 		addEnemy(1);
 		break;
 	case 2:
-		addEnemy(1);
+		addEnemy(2);
 		break;
 	case 3:
-		addEnemy(1);
+		addEnemy(3);
 		break;
 	case 4:
 		addEnemy(1);
+		addEnemy(2);
 		break;
 	case 5:
 		addEnemy(1);
+		addEnemy(3);
 		break;
 	case 6:
-		addEnemy(1);
+		addEnemy(2);
+		addEnemy(3);
 		break;
 
 	}
@@ -46,6 +50,6 @@ Structure::Structure(Player* p, Game* g)
 
 void Structure::addEnemy(int l)
 {
-	Enemy e1(pl, 2, ga);
+	Enemy *e1 = new Enemy(pl, l, ga);
 	printf("addenemy");
 }
