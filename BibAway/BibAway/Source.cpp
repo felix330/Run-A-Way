@@ -22,6 +22,7 @@ Game::Game()
 	state = 0;
 	score = 0;
 	enemycount = 0;
+	count = 0;
 	
 }
 
@@ -81,6 +82,7 @@ void Game::loop()
 	}
 
 	sf::Text scoretext;
+	sf::Text livetext;
 
 	//Create Objects for start of game
 	Player player1;
@@ -131,6 +133,12 @@ void Game::loop()
 		scoretext.setString(scorevalue);
 		scoretext.setCharacterSize(12);
 		scoretext.setColor(sf::Color::Black);
+
+		itoa(player1.getLives(), scorevalue, 10);
+		livetext.setFont(mainfont);
+		livetext.setString(scorevalue);
+		livetext.setCharacterSize(12);
+		livetext.setColor(sf::Color::Black);
 
 		//player function calls
 
@@ -213,6 +221,9 @@ void Game::loop()
 			//Draw Text
 
 			window.draw(scoretext);
+			livetext.setPosition(230, 0);
+	
+			window.draw(livetext);
 
 			//---
 		}
@@ -239,8 +250,10 @@ void Game::doodle()
 void Game::incScore()
 {
 	count++;
+	
 	if (count == 60)
 	{
+		printf("count");
 		score++;
 		count = 0;
 	}

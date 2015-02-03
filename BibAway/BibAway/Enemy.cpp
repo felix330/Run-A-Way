@@ -46,7 +46,9 @@ bool Enemy::collisionCheck(){
 
 	if (newcurrentLane == pl->getLane() && collisionY >= 264 && collisionY <= 290){
 		c = true;
+		pl->loseLife();
 		printf("kill");
+		//delete this;
 	}
 
 	
