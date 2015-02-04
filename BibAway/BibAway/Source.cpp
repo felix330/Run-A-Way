@@ -121,6 +121,13 @@ void Game::loop()
 					state = 1;
 					printf("start");
 				}
+
+				if (event.key.code == sf::Keyboard::Return && state == 2)
+				{
+					state = 1;
+					player1.reset();
+					printf("start");
+				}
 			}
 			
 		}
@@ -159,7 +166,7 @@ void Game::loop()
 			window.draw(backgroundspr);
 
 			//Player Animation
-			if (counter == 20 || counter == 40 || counter == 60)
+			if (counter == 10 || counter == 20 || counter == 30 || counter == 40 || counter == 50 || counter == 60)
 			{
 				playeranimstate++;
 				if (playeranimstate > 4)
@@ -240,6 +247,8 @@ void Game::loop()
 
 		if (state == 2) //Game over
 		{
+			
+
 
 		}
 		

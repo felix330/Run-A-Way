@@ -61,6 +61,7 @@ public:
 	int getLives();
 	void loseLife();
 	int getLane();
+	void reset();
 };
 
 class Game;

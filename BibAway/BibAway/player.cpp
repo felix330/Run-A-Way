@@ -74,6 +74,12 @@ void Player::loseLife()
 	lives--;
 }
 
+void Player::reset()
+{
+	lives = 3;
+	currentLane = 2;
+}
+
 int Player::getLives()
 {
 	return lives;

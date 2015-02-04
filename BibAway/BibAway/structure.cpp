@@ -17,30 +17,30 @@
 Structure::Structure(Player* p, Game* g)
 {
 	srand(time(NULL));
-	int random = rand() % 7;
+	int random = rand() % 6;
 	ga = g;
 	pl = p;
 	
 	switch (random)
 	{
-	case 1:
+	case 0:
 		addEnemy(1);
 		break;
-	case 2:
+	case 1:
 		addEnemy(2);
 		break;
-	case 3:
+	case 2:
 		addEnemy(3);
+		break;
+	case 3:
+		addEnemy(1);
+		addEnemy(2);
 		break;
 	case 4:
 		addEnemy(1);
-		addEnemy(2);
-		break;
-	case 5:
-		addEnemy(1);
 		addEnemy(3);
 		break;
-	case 6:
+	case 5:
 		addEnemy(2);
 		addEnemy(3);
 		break;
