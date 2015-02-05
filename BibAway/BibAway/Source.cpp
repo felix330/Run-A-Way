@@ -74,6 +74,19 @@ void Game::loop()
 	enemySpr.setTexture(enemyTexL);
 	int enemyanimstate=0;
 	
+	//Start/Endscreen
+
+	sf::Texture starttex;
+	if (!starttex.loadFromFile("titel.png"))
+	{ }
+	sf::Sprite startspr;
+	startspr.setTexture(starttex);
+
+	sf::Texture gotex;
+	if (!gotex.loadFromFile("game_over.png"))
+	{}
+	sf::Sprite gospr;
+	gospr.setTexture(gotex);
 
 	//Font
 	sf::Font mainfont;
@@ -153,6 +166,10 @@ void Game::loop()
 		//Fenster Darstellung
 		window.clear();
 
+		if (state == 0)
+		{
+			window.draw(startspr);
+		}
 	
 		if (state == 1)
 		{
@@ -248,19 +265,38 @@ void Game::loop()
 
 		if (state == 2) //Game over
 		{
-			sf::Text text;
+			
+			if (score > highscore)
+			{
+				highscore = score;
+			}
 
-			text.setFont(mainfont);
-			text.setString("Game Over");
-			text.setPosition(20, 120);
+			window.draw(gospr);
+			scoretext.setPosition(150, 200);
+			window.draw(scoretext);
 
-			text.setCharacterSize(12);
-			text.setColor(sf::Color::White);
+			sf::Text t;
+			t.setFont(mainfont);
+			t.setCharacterSize(12);
+			t.setColor(sf::Color::Black);
+			t.setPosition(50, 200);
+			t.setString("Your Time: ");
+			window.draw(t);
 
-			window.draw(text);
+			//---------------------------
 
+			scoretext.setPosition(150, 250);
+			itoa(highscore, scorevalue, 10);
+			window.draw(scoretext);
 
-
+			sf::Text s;
+			s.setFont(mainfont);
+			s.setCharacterSize(12);
+			s.setColor(sf::Color::Black);
+			s.setPosition(50, 250);
+			s.setString("Highscore: ");
+			window.draw(s);
+			
 		}
 		
 		window.display();
@@ -295,3 +331,4 @@ void Game::addEnemy(Enemy* e)
 	enemyArray[enemycount]=e;
 	enemycount++;
 }
+
