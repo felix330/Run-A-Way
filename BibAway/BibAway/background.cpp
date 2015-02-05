@@ -37,7 +37,7 @@ void Background::move()
 	{	
 		if (getYroot() >= 320)
 		{
-			setPosition(0, -960);
+			setPosition(0, -959);
 		}
 		else
 		{

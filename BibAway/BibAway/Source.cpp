@@ -208,7 +208,7 @@ void Game::loop()
 				Structure *s = new Structure(&player1,this);
 			}
 
-			if (counter == 30 || counter == 60)
+			if (counter == 10 || counter == 20 || counter == 30 || counter == 40 || counter == 50 || counter == 60)
 			{
 				enemyanimstate++;
 				if (enemyanimstate > 2)
