@@ -16,4 +16,5 @@ int main()
 	Game gameWindow;
 	
 	gameWindow.loop();
+
 }

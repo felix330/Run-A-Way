@@ -203,7 +203,7 @@ void Game::loop()
 
 			//Enemy from here!!!
 
-			if (counter == 60)
+			if (counter == 20 || counter == 40 || counter == 60)
 			{
 				Structure *s = new Structure(&player1,this);
 			}

@@ -44,7 +44,7 @@ bool Enemy::collisionCheck(){
 	itoa(playerLane, scorevalue, 10);
 	printf(scorevalue);*/
 
-	if (newcurrentLane == pl->getLane() && collisionY >= 264 && collisionY <= 290){
+	if (newcurrentLane == pl->getLane() && collisionY >= 264 && collisionY <= 320){
 		c = true;
 		pl->loseLife();
 		printf("kill");
@@ -57,7 +57,7 @@ bool Enemy::collisionCheck(){
 }
 
 void Enemy::move(){
-	movePosition(0, 2);
+	movePosition(0, 4);
 	collisionCheck();
 }
 
