@@ -21,6 +21,7 @@ Game::Game()
 	windowY = 320;
 	state = 0;
 	score = 0;
+	highscore = 0;
 	enemycount = 0;
 	count = 0;
 	
@@ -247,7 +248,17 @@ void Game::loop()
 
 		if (state == 2) //Game over
 		{
-			
+			sf::Text text;
+
+			text.setFont(mainfont);
+			text.setString("Game Over");
+			text.setPosition(20, 120);
+
+			text.setCharacterSize(12);
+			text.setColor(sf::Color::White);
+
+			window.draw(text);
+
 
 
 		}
