@@ -19,6 +19,7 @@ Enemy::Enemy(Player* p, int lane, Game* g){
 	pl = p;
 	newcurrentLane = lane;
 	g->addEnemy(this);
+	active = true;
 }
 
 
@@ -42,10 +43,12 @@ bool Enemy::collisionCheck(){
 	itoa(playerLane, scorevalue, 10);
 	printf(scorevalue);*/
 
-	if (newcurrentLane == pl->getLane() && collisionY >= 258 && collisionY <= 310){
+	if (newcurrentLane == pl->getLane() && collisionY >= 258 && collisionY <= 310 && active==true){
 		c = true;
 		pl->loseLife();
 		printf("kill");
+		setPosition(-50, -50);
+		active = false;
 	}
 
 	
@@ -54,8 +57,13 @@ bool Enemy::collisionCheck(){
 }
 
 void Enemy::move(){
-	movePosition(0, 4);
-	collisionCheck();
+
+	if (active == true)
+	{
+		movePosition(0, 4);
+		collisionCheck();
+	}
+	
 }
 
 int Enemy::getX()

@@ -71,7 +71,7 @@ class Enemy : GameObject
 private:
 	Player *pl;
 	int newcurrentLane;
-
+	bool active;
 
 public:
 	Enemy(Player* p, int lane, Game* g);
