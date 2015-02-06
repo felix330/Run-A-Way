@@ -139,8 +139,14 @@ void Game::loop()
 				if (event.key.code == sf::Keyboard::Return && state == 2)
 				{
 					state = 1;
+					score = 0;
 					player1.reset();
 					printf("start");
+
+					for (int i = 0; i < enemycount; i++){
+						enemyArray[i] = NULL;
+					}
+					enemycount = 0;
 				}
 			}
 			
@@ -152,6 +158,7 @@ void Game::loop()
 		itoa(score, scorevalue, 10);
 		scoretext.setFont(mainfont); 
 		scoretext.setString(scorevalue);
+		scoretext.setPosition(0, 0);
 		scoretext.setCharacterSize(12);
 		scoretext.setColor(sf::Color::Black);
 
@@ -285,8 +292,10 @@ void Game::loop()
 
 			//---------------------------
 
+			char newvalue[10];
 			scoretext.setPosition(150, 250);
-			itoa(highscore, scorevalue, 10);
+			itoa(highscore, newvalue, 10);
+			scoretext.setString(newvalue);
 			window.draw(scoretext);
 
 			sf::Text s;

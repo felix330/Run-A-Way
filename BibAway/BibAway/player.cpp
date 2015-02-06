@@ -78,6 +78,7 @@ void Player::reset()
 {
 	lives = 3;
 	currentLane = 2;
+	setPosition(90, 260);
 }
 
 int Player::getLives()

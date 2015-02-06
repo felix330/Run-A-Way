@@ -65,6 +65,7 @@ public:
 };
 
 class Game;
+
 class Enemy : GameObject
 {
 private:
@@ -74,7 +75,7 @@ private:
 
 public:
 	Enemy(Player* p, int lane, Game* g);
-	~Enemy();
+	//~Enemy();
 	bool collisionCheck();
 	void move();
 	int getX();

@@ -46,6 +46,7 @@ Structure::Structure(Player* p, Game* g)
 		break;
 
 	}
+	delete this;
 }
 
 void Structure::addEnemy(int l)

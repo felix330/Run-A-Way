@@ -21,9 +21,7 @@ Enemy::Enemy(Player* p, int lane, Game* g){
 	g->addEnemy(this);
 }
 
-Enemy::~Enemy(){
 
-}
 
 bool Enemy::collisionCheck(){
 	
@@ -48,7 +46,6 @@ bool Enemy::collisionCheck(){
 		c = true;
 		pl->loseLife();
 		printf("kill");
-		//delete this;
 	}
 
 	
