@@ -25,6 +25,8 @@ Game::Game()
 	enemycount = 0;
 	count = 0;
 	enemyspeed = 2;
+	spawncounter = 0;
+	spawnlimit = 60;
 	
 }
 
@@ -145,9 +147,13 @@ void Game::loop()
 					printf("start");
 
 					for (int i = 0; i < enemycount; i++){
+						delete enemyArray[i];
 						enemyArray[i] = NULL;
 					}
 					enemycount = 0;
+					enemyspeed = 2;
+					spawncounter = 0;
+					spawnlimit = 60;
 				}
 			}
 			
@@ -227,20 +233,12 @@ void Game::loop()
 			}
 
 			//Enemy from here!!!
-			if (counter == 60 && enemyspeed <= 2)
+			if (spawncounter >= spawnlimit)
 			{
 				Structure *s = new Structure(&player1, this);
+				spawncounter = 0;
 			}
-
-			if (counter == 30 && enemyspeed > 2 && enemyspeed < 4 || counter == 60 && enemyspeed<3 && enemyspeed < 4)
-			{
-				Structure *s = new Structure(&player1,this);
-			}
-
-			if (counter == 20 && enemyspeed >= 4 || counter == 40 && enemyspeed >= 4 || counter == 60 && enemyspeed >= 4)
-			{
-				Structure *s = new Structure(&player1, this);
-			}
+			spawncounter++;
 
 			if (counter == 10 || counter == 20 || counter == 30 || counter == 40 || counter == 50 || counter == 60)
 			{
@@ -264,9 +262,18 @@ void Game::loop()
 			}
 			
 			for (int i = 0; i < enemycount; i++){
-				enemySpr.setPosition(enemyArray[i]->getX(), enemyArray[i]->getY());
-				enemyArray[i]->move(enemyspeed);
-				window.draw(enemySpr);
+				if (enemyArray[i] != NULL)
+				{
+					enemySpr.setPosition(enemyArray[i]->getX(), enemyArray[i]->getY());
+					enemyArray[i]->move(enemyspeed);
+					window.draw(enemySpr);
+					if (enemyArray[i]->getY() > 320)
+					{
+						delete enemyArray[i];
+						enemyArray[i] = NULL;
+					}
+				}
+
 			}
 			
 			switch (score)
@@ -275,17 +282,19 @@ void Game::loop()
 				enemyspeed = 3;
 				break;
 			case 20:
+				spawnlimit = 40;
 				enemyspeed = 4;
 				break;
 			case 40:
+				spawnlimit = 30;
 				enemyspeed = 5;
 				break;
 			case 80:
+				spawnlimit = 20;
 				enemyspeed = 6;
 				break;
 
 			}
-
 			//Draw Text
 
 			window.draw(scoretext);

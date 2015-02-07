@@ -71,7 +71,7 @@ int Player::getY()
 
 void Player::loseLife()
 {
-	lives--;
+	//lives--;
 }
 
 void Player::reset()

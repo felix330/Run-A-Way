@@ -118,6 +118,8 @@ private:
 	sf::Sprite sprites[10];
 	int count; //zählt frames
 	int enemycount;
+	int spawncounter;
+	int spawnlimit;
 	Enemy* enemyArray[];
 
 public:

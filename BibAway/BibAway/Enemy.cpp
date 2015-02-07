@@ -50,6 +50,10 @@ bool Enemy::collisionCheck(){
 		active = false;
 	}
 
+	if (getY() >= 320)
+	{
+		active = false;
+	}
 	
 	return c;
 	return false;
