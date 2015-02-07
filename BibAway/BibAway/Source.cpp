@@ -303,7 +303,7 @@ void Game::loop()
 			s.setCharacterSize(12);
 			s.setColor(sf::Color::Black);
 			s.setPosition(50, 250);
-			s.setString("Highscore: ");
+			s.setString("Best Time: ");
 			window.draw(s);
 			
 		}

@@ -34,11 +34,11 @@ Structure::Structure(Player* p, Game* g)
 		break;
 	case 3:
 		addEnemy(1);
-		addEnemy(2);
+		addEnemy(3);
 		break;
 	case 4:
 		addEnemy(1);
-		addEnemy(3);
+		addEnemy(2);
 		break;
 	case 5:
 		addEnemy(2);
@@ -52,5 +52,4 @@ Structure::Structure(Player* p, Game* g)
 void Structure::addEnemy(int l)
 {
 	Enemy *e1 = new Enemy(pl, l, ga);
-	printf("addenemy");
 }
