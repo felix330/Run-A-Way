@@ -55,11 +55,11 @@ bool Enemy::collisionCheck(){
 	return false;
 }
 
-void Enemy::move(){
+void Enemy::move(int s){
 
 	if (active == true)
 	{
-		movePosition(0, 4);
+		movePosition(0, s);
 		collisionCheck();
 	}
 	

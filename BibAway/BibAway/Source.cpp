@@ -24,6 +24,7 @@ Game::Game()
 	highscore = 0;
 	enemycount = 0;
 	count = 0;
+	enemyspeed = 2;
 	
 }
 
@@ -226,10 +227,19 @@ void Game::loop()
 			}
 
 			//Enemy from here!!!
+			if (counter == 60 && enemyspeed <= 2)
+			{
+				Structure *s = new Structure(&player1, this);
+			}
 
-			if (counter == 20 || counter == 40 || counter == 60)
+			if (counter == 30 && enemyspeed > 2 && enemyspeed < 4 || counter == 60 && enemyspeed<3 && enemyspeed < 4)
 			{
 				Structure *s = new Structure(&player1,this);
+			}
+
+			if (counter == 20 && enemyspeed >= 4 || counter == 40 && enemyspeed >= 4 || counter == 60 && enemyspeed >= 4)
+			{
+				Structure *s = new Structure(&player1, this);
 			}
 
 			if (counter == 10 || counter == 20 || counter == 30 || counter == 40 || counter == 50 || counter == 60)
@@ -255,10 +265,26 @@ void Game::loop()
 			
 			for (int i = 0; i < enemycount; i++){
 				enemySpr.setPosition(enemyArray[i]->getX(), enemyArray[i]->getY());
-				enemyArray[i]->move();
+				enemyArray[i]->move(enemyspeed);
 				window.draw(enemySpr);
 			}
 			
+			switch (score)
+			{
+			case 10:
+				enemyspeed = 3;
+				break;
+			case 20:
+				enemyspeed = 4;
+				break;
+			case 40:
+				enemyspeed = 5;
+				break;
+			case 80:
+				enemyspeed = 6;
+				break;
+
+			}
 
 			//Draw Text
 
@@ -313,6 +339,7 @@ void Game::loop()
 		if (counter == 60)
 		{
 			counter = 0;
+
 		}
 	}
 }

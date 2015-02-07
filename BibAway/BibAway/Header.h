@@ -77,7 +77,7 @@ public:
 	Enemy(Player* p, int lane, Game* g);
 	//~Enemy();
 	bool collisionCheck();
-	void move();
+	void move(int s);
 	int getX();
 	int getY();
 };
@@ -113,6 +113,7 @@ private:
 	int windowY;
 	int highscore;
 	int score;
+	int enemyspeed;
 	sf::RenderWindow window;
 	sf::Sprite sprites[10];
 	int count; //zählt frames
